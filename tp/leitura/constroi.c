@@ -24,7 +24,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    int argc, i, integrante, flagIntegrantes;
    
    pFile = fopen(arquivo, "r");
-   
+   printf("Hola mundo!");
    if (!pFile)
       printf("'%s' not exist\n", arquivo);
       
