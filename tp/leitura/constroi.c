@@ -1,5 +1,5 @@
 /*!	
-*	Descrição do arquivo.
+*	Arquivo de construcao das listas de discentes, docentes, projetos.
 *	\author Danilo Alves.
 * 	\author José Siqueira.
 *	\since 01/03/15.
