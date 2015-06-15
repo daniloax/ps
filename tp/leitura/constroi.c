@@ -19,48 +19,34 @@
 void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
  
    FILE *pFile;
+      
+   int argc; /* contador de argumentos do buffer de linha */
+      
+   char *args[2];  /* propriedades e valores dos projetos */
+      
+   char *argv; /* valores das propriedades dos projetos */
+      
+   char buffer[256]; /* buffer de linha temporario */
+      
+   char bufferIntegrante[256]; /* buffer temporario para integrantes dos projetos */
+      
+   char c; /* caracter de leitura de arquivo */
+      
+   char *intv; /* valor de string entre tokens do buffer de integrantes dos projetos */
    
-   /** contador de argumentos do buffer de linha */
-   int argc;
+   int i; /* contador de caracteres do buffer de linha */
    
-   /** propriedades e valores dos projetos */
-   char *args[2]; 
+   int integrante; /* numero do integrante do projeto */
    
-   /** valores das propriedades dos projetos */;
-   char *argv;
+   int flagIntegrantes; /* sinaliza leitura de secao de integrantes do projeto */
    
-   /** buffer de linha temporario */;
-   char buffer[256];
+   ListaProjeto *pp1; /* ponteiro auxiliar de lista de projeto */
    
-   /** buffer temporario para integrantes dos projetos */
-   char bufferIntegrante[256];
-   
-   /** caracter de leitura de arquivo */;
-   char c;
-   
-   /** valor de string entre tokens do buffer de integrantes dos projetos */
-   char *intv;
-   
-   /** contador de caracteres do buffer de linha */
-   int i;
-   
-   /** numero do integrante do projeto */
-   int integrante;
-   
-   /** sinaliza leitura de secao de integrantes do projeto */
-   int flagIntegrantes;
-   
-   /** ponteiro auxiliar de lista de projeto */
-   ListaProjeto *pp1;
-   
-   /** ponteiro auxiliar de lista de projeto */
-	ListaProjeto *pp2;
+   ListaProjeto *pp2; /* ponteiro auxiliar de lista de projeto */
 	
-   /** ponteiro de projeto */
-   TipoProjeto *projeto;
+   TipoProjeto *projeto; /* ponteiro de projeto */
    
-   /** abre arquivo */
-   pFile = fopen(arquivo, "r");
+   pFile = fopen(arquivo, "r"); /* abre arquivo */
    
    if (!pFile)
       printf("'%s' not exist\n", arquivo);
