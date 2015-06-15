@@ -7,12 +7,17 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    char *args[2], *argv, c, buffer[256], bufferIntegrante[256], *ints, *intv;
    int argc, i, integrante, flagIntegrantes;
    
+   ListaProjeto *pa1;
+	ListaProjeto *pa2;
+	
+   TipoProjeto *projeto;
+   
    pFile = fopen(arquivo, "r");
    
    if (!pFile)
       printf("'%s' not exist\n", arquivo);
       
-   else { 
+   else {
       
       printf("\n");
       
@@ -27,7 +32,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             buffer[i] = c;
             i++;
          
-         } while ((c = getc(pFile)) != '\n');
+         } while (((c = getc(pFile)) != '\n') && (c != EOF));
          
          buffer[i] = '\0';
          
@@ -38,7 +43,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
          while (argv != NULL) {
          
             args[argc] = argv;
-            printf("%s\n", args[argc]);
+            printf("args[%d]: %s\n", argc, args[argc]);
             argv = strtok(NULL, "=");
             argc++;
       
@@ -58,7 +63,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                   buffer[i] = c;
                   i++;
 
-               } while ((c = getc(pFile)) != '\n');
+               } while (((c = getc(pFile)) != '\n') && (c != EOF));
                
                buffer[i] = '\0';
                
@@ -117,7 +122,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
 
 void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 
-   FILE *pArquivo;
+   FILE *pFile;
    
    char separador;
    char buffer[78];
@@ -131,9 +136,9 @@ void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 	
    TipoPessoa *discente;
 
-   pArquivo = fopen(arquivo, "r");
+   pFile = fopen(arquivo, "r");
 
-   if (!pArquivo)
+   if (!pFile)
       printf("'%s' not exist\n", arquivo);
 
    else {
@@ -142,13 +147,13 @@ void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
        *  ate encontrar a palavra Matricula */
 		while (strcmp("Matricula", nome) != 0) {
 				
-			fgets(buffer, sizeof(buffer), pArquivo);
+			fgets(buffer, sizeof(buffer), pFile);
 			sscanf(buffer,"%s", &nome);
 			
 		}
 		
 		/** filtra informacoes e constroi lista de discentes */
-		while ((fgets(buffer, sizeof(buffer), pArquivo)) != NULL ) {
+		while ((fgets(buffer, sizeof(buffer), pFile)) != NULL ) {
 			
 			if (sscanf(buffer,"%d%c%d %[^\n]s", &anoMatricula, &separador, &matricula, nome) == 4) {
 				
@@ -173,15 +178,15 @@ void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 					
 				pd2 = pd1;
 				
-				while (getc(pArquivo) != 10);
+				while (getc(pFile) != 10);
 		
 			}
 			
 		}
+      
+      fclose (pFile);
 		
 	}
-	
-	fclose (pArquivo);
 
 }
 

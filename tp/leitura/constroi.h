@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../estrutura/atividade.h"
 #include "../estrutura/lista.h"
 #include "../estrutura/pessoa.h"
 #include "../estrutura/string.h"

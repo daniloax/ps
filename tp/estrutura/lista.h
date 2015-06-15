@@ -5,29 +5,29 @@
 #include "pessoa.h"
 #include "string.h"
 
-typedef struct Integrante {
+typedef struct ListaIntegrante {
    struct TipoPessoa *integrante;
-   struct Integrante *proximoIntegrante;
+   struct ListaIntegrante *proximoIntegrante;
 } ListaIntegrante;
 
-typedef struct NomeCitacao {
+typedef struct ListaNomeCitacao {
    struct TipoString *nomeCitacao;
-   struct NomeCitacao *proximaCitacao;
+   struct ListaNomeCitacao *proximaCitacao;
 } ListaNomeCitacao;
 
-typedef struct Projeto {
-   struct TipoAtividade *projeto;
-   struct Atividade *proximoProjeto;
+typedef struct ListaProjeto {
+   struct TipoProjeto *projeto;
+   struct ListaProjeto *proximoProjeto;
 } ListaProjeto;
 
-typedef struct Discente {
+typedef struct ListaDiscente {
    struct TipoPessoa *discente;
-   struct Discente *proximoDiscente;
+   struct ListaDiscente *proximoDiscente;
 } ListaDiscente;
 
-typedef struct Docente {
+typedef struct ListaDocente {
    struct TipoPessoa *docente;
-   struct Docente *proximoDocente;
+   struct ListaDocente *proximoDocente;
 } ListaDocente;
 
 #endif

@@ -16,11 +16,12 @@ int main() {
    
    ConstroiListaDiscente(&pInicioDiscentes, discentesMestrado);
    ConstroiListaDiscente(&pInicioDiscentes, discentesDoutorado);
+   ConstroiListaProjeto(&pInicioProjetos, projetos);
    
    // OrdenaListaDiscente(&pInicioDiscentes);
-   PercorreListaDiscente(pInicioDiscentes);
+   // PercorreListaDiscente(pInicioDiscentes);
    
-   ConstroiListaProjeto(&pInicioProjetos, projetos);
+   
    
    return 0;
    
