@@ -43,7 +43,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             buffer[i] = c;
             i++;
          
-         } while ((c = getc(pFile)) != '\n');
+         } while (((c = getc(pFile)) != '\n') && (c != EOF));
          
          buffer[i] = '\0';
          
@@ -74,7 +74,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                   buffer[i] = c;
                   i++;
 
-               } while ((c = getc(pFile)) != '\n');
+               } while (((c = getc(pFile)) != '\n') && (c != EOF));
                
                buffer[i] = '\0';
                
