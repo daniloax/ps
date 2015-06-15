@@ -1,5 +1,22 @@
+/*!	
+*	Descrição do arquivo.
+*	\author Danilo Alves.
+* 	\author José Siqueira.
+*	\since 01/03/15.
+*	\version 0.0.1.
+*
+*/
+
+
 #include "constroi.h"
 
+
+/**
+* Uma função que constroi uma lista de projetos a partir do arquivo de entrada.
+* @param **epinicio o endereco do ponteiro da lista de projetos.
+* @param *arquivo um array de caracteres que contem o nome do arquivo.
+* @return sem retorno.
+*/
 void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
  
    FILE *pFile;
@@ -7,17 +24,12 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    char *args[2], *argv, c, buffer[256], bufferIntegrante[256], *ints, *intv;
    int argc, i, integrante, flagIntegrantes;
    
-   ListaProjeto *pa1;
-	ListaProjeto *pa2;
-	
-   TipoProjeto *projeto;
-   
    pFile = fopen(arquivo, "r");
    
    if (!pFile)
       printf("'%s' not exist\n", arquivo);
       
-   else {
+   else { 
       
       printf("\n");
       
@@ -32,7 +44,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             buffer[i] = c;
             i++;
          
-         } while (((c = getc(pFile)) != '\n') && (c != EOF));
+         } while ((c = getc(pFile)) != '\n');
          
          buffer[i] = '\0';
          
@@ -43,7 +55,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
          while (argv != NULL) {
          
             args[argc] = argv;
-            printf("args[%d]: %s\n", argc, args[argc]);
+            printf("%s\n", args[argc]);
             argv = strtok(NULL, "=");
             argc++;
       
@@ -63,7 +75,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                   buffer[i] = c;
                   i++;
 
-               } while (((c = getc(pFile)) != '\n') && (c != EOF));
+               } while ((c = getc(pFile)) != '\n');
                
                buffer[i] = '\0';
                
@@ -120,9 +132,15 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    
 }
 
+/**
+* Uma função que constroi uma lista de discentes a partir do arquivo de entrada.
+* @param **epinicio o endereco do ponteiro da lista de discentes.
+* @param *arquivo um array de caracteres que contem o nome do arquivo.
+* @return sem retorno.
+*/
 void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 
-   FILE *pFile;
+   FILE *pArquivo;
    
    char separador;
    char buffer[78];
@@ -136,9 +154,9 @@ void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 	
    TipoPessoa *discente;
 
-   pFile = fopen(arquivo, "r");
+   pArquivo = fopen(arquivo, "r");
 
-   if (!pFile)
+   if (!pArquivo)
       printf("'%s' not exist\n", arquivo);
 
    else {
@@ -147,13 +165,13 @@ void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
        *  ate encontrar a palavra Matricula */
 		while (strcmp("Matricula", nome) != 0) {
 				
-			fgets(buffer, sizeof(buffer), pFile);
+			fgets(buffer, sizeof(buffer), pArquivo);
 			sscanf(buffer,"%s", &nome);
 			
 		}
 		
 		/** filtra informacoes e constroi lista de discentes */
-		while ((fgets(buffer, sizeof(buffer), pFile)) != NULL ) {
+		while ((fgets(buffer, sizeof(buffer), pArquivo)) != NULL ) {
 			
 			if (sscanf(buffer,"%d%c%d %[^\n]s", &anoMatricula, &separador, &matricula, nome) == 4) {
 				
@@ -178,18 +196,23 @@ void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 					
 				pd2 = pd1;
 				
-				while (getc(pFile) != 10);
+				while (getc(pArquivo) != 10);
 		
 			}
 			
 		}
-      
-      fclose (pFile);
 		
 	}
+	
+	fclose (pArquivo);
 
 }
 
+/**
+* Uma função que percorre a lista de discentes.
+* @param *pinicio um ponteiro para o inicio da lista de discentes.
+* @return sem retorno.
+*/
 void PercorreListaDiscente(ListaDiscente *pinicio) {
 	
 	int matricula;
