@@ -27,6 +27,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
 
    printf("Hola mundo!");
    printf("Ola world!");
+   printf("teste merge!");
    
    if (!pFile)
       printf("'%s' not exist\n", arquivo);
