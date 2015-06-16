@@ -1,12 +1,3 @@
-/*!	
-*	Descrição do cabeçalho.
-*	\author Danilo Alves.
-* 	\author José Siqueira.
-*	\since 01/03/15.
-*	\version 0.0.1.
-*
-*/
-
 #ifndef CONSTROI_H_
 #define CONSTROI_H_
 
@@ -20,6 +11,7 @@
 #include "../estrutura/string.h"
 
 void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo);
+void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo)
 void OrdenaListaDiscente(ListaDiscente **epinicio);
 void PercorreListaDiscente(ListaDiscente *pinicio);
 
