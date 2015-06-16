@@ -20,9 +20,46 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
  
    FILE *pFile;
    
-   char *args[2], *argv, c, buffer[256], bufferIntegrante[256], *ints, *intv;
-   int argc, i, integrante, flagIntegrantes;
+   /** contador de argumentos do buffer de linha */
+   int argc;
    
+   /** propriedades e valores dos projetos */
+   char *args[2]; 
+   
+   /** valores das propriedades dos projetos */;
+   char *argv;
+   
+   /** buffer de linha temporario */;
+   char buffer[256];
+   
+   /** buffer temporario para integrantes dos projetos */
+   char bufferIntegrante[256];
+   
+   /** caracter de leitura de arquivo */;
+   char c;
+   
+   /** valor de string entre tokens do buffer de integrantes dos projetos */
+   char *intv;
+   
+   /** contador de caracteres do buffer de linha */
+   int i;
+   
+   /** numero do integrante do projeto */
+   int integrante;
+   
+   /** sinaliza leitura de secao de integrantes do projeto */
+   int flagIntegrantes;
+   
+   /** ponteiro auxiliar de lista de projeto */
+   ListaProjeto *pp1;
+   
+   /** ponteiro auxiliar de lista de projeto */
+	ListaProjeto *pp2;
+	
+   /** ponteiro de projeto */
+   TipoProjeto *projeto;
+   
+   /** abre arquivo */
    pFile = fopen(arquivo, "r");
    
    if (!pFile)
@@ -34,6 +71,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
       
       while ((c = getc(pFile)) != EOF) {
       
+         /** inicializa contadores */
          argc = 0;
          i = 0;
          
@@ -45,27 +83,31 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
          
          } while (((c = getc(pFile)) != '\n') && (c != EOF));
          
+         /** adiciona caracter de termino de string */
          buffer[i] = '\0';
          
-         /** separa buffer */
+         /** separa buffer de linha */
          argv = strtok(buffer, "=");
          
-         /** chave = valor */
+         /** propriedade = valor */
          while (argv != NULL) {
          
             args[argc] = argv;
-            printf("%s\n", args[argc]);
+            printf("args[%d]: %s\n", argc, args[argc]);
             argv = strtok(NULL, "=");
             argc++;
       
          }
          
-         /** integrantes do projeto */
+         /** secao integrantes do projeto */
          if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
             
             do {
             
+               /** inicializa sinalizador de secao */
                flagIntegrantes = 0;
+               
+               /** inicializa contador */
                i = 0;
                
                /** leitura de linha */
@@ -78,35 +120,37 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                
                buffer[i] = '\0';
                
-               /** integrante */
+               /** examina padrao no buffer de linha */
                if (sscanf(buffer, "%d%[^\n]s", &integrante, &bufferIntegrante) == 2) {
                   
                   printf("%d\n", integrante);
                   
-                  /** separa buffer */
+                  /** separa buffer de integrante */
                   intv = strtok(bufferIntegrante, " ="  );
                   
-                  /** sinaliza */
+                  /** sinaliza secao */
                   if (strcmp("NOME-COMPLETO", intv) == 0)
                      flagIntegrantes = 1;
                   
-                  /** nao identifica chaves e valores */
+                  /** integrante = responsavel */
                   while (intv != NULL) {
-               
-                     ints = intv;
-                     printf("%s\n", ints);
+
+                     printf("%s\n", intv);
                      intv = strtok(NULL, " =");
                
                   }
                   
-               /** linha entre projetos */
+               /** entre projetos - nao encontra padrao da secao de integrantes */
                } else {
                   
+                  /** inicializa contadores */
                   argc = 0;
                   i = 0;
                   
+                  /** separa buffer de linha */
                   argv = strtok(buffer, "=");
 
+                  /** descarta linha */
                   while (argv != NULL) {
          
                      args[argc] = argv;
