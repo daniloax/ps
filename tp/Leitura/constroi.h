@@ -5,13 +5,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../estrutura/atividade.h"
-#include "../estrutura/lista.h"
-#include "../estrutura/pessoa.h"
-#include "../estrutura/string.h"
+#include "../Estrutura/atividade.h"
+#include "../Estrutura/lista.h"
+#include "../Estrutura/pessoa.h"
+#include "../Estrutura/string.h"
 
 void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo);
-void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo)
+void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo);
 void OrdenaListaDiscente(ListaDiscente **epinicio);
 void PercorreListaDiscente(ListaDiscente *pinicio);
 

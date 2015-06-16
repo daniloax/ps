@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "estrutura/atividade.h"
-#include "leitura/constroi.h"
-#include "estrutura/lista.h"
-#include "estrutura/pessoa.h"
+#include "Estrutura/atividade.h"
+#include "Leitura/constroi.h"
+#include "Estrutura/lista.h"
+#include "Estrutura/pessoa.h"
 
 
 int main();

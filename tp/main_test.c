@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "cunit/CUnit.h"
-#include "cunit/Basic.h" 
+#include "CUnit/CUnit.h"
+#include "CUnit/Basic.h" 
 #include "main.c"
 
 /*

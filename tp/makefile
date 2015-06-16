@@ -14,8 +14,8 @@ prog: main.o constroi.o
 main.o: main.c
 	gcc -c -g -Wall main.c
 	
-constroi.o: ./leitura/constroi.c
-	gcc -c -g -Wall ./leitura/constroi.c
+constroi.o: ./Leitura/constroi.c
+	gcc -c -g -Wall ./Leitura/constroi.c
 	
 #	gcov: main.c main_test.c
 #	gcc -Wall -ftest-coverage -fprofile-args -I ./Cunit -L ./CUnit main_test.c -lcunit_$(ARCH) -o test_gcov

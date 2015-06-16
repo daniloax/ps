@@ -2,9 +2,9 @@
 
 int main() {
 	
-	char discentesMestrado[] = "arquivos/discentes_mestrado.txt";
-	char discentesDoutorado[] = "arquivos/discentes_doutorado.txt";
-   char projetos[] = "arquivos/projetos.txt";
+	char discentesMestrado[] = "Arquivos/discentes_mestrado.txt";
+	char discentesDoutorado[] = "Arquivos/discentes_doutorado.txt";
+   char projetos[] = "Arquivos/projetos.txt";
    
    struct ListaDiscente *pInicioDiscentes;
    struct ListaDocente *pInicioDocentes;
