@@ -35,6 +35,9 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    /** buffer temporario para integrantes dos projetos */
    char bufferIntegrante[256];
    
+   
+   char bufferPropriedade[256];
+   
    /** caracter de leitura de arquivo */
    char c;
    
@@ -93,14 +96,37 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
          while (argv != NULL) {
          
             args[argc] = argv;
-            printf("args[%d]: %s\n", argc, args[argc]);
+            // printf("args[%d]: %s\n", argc, args[argc]);
             argv = strtok(NULL, "=");
             argc++;
       
          }
          
+         if (strcmp("NOME-DO-PROJETO ", args[0]) == 0)
+            printf("NOME-DO-PROJETO: %s\n", args[1]);
+            
+         else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0)
+            printf("DESCRICAO-DO-PROJETO: %s\n", args[1]);
+            
+         else if (strcmp("ANO-INICIO ", args[0]) == 0)
+            printf("ANO-INICIO: %s\n", args[1]);
+            
+         else if (strcmp("SITUACAO ", args[0]) == 0)
+            printf("SITUACAO: %s\n", args[1]);
+            
+         else if (strcmp("NATUREZA", args[0]) == 0)
+            printf("NATUREZA: %s\n", args[1]);
+            
+         else if (strcmp("NOME COMPLETO ", args[0]) == 0)
+            printf("NOME COMPLETO: %s\n", args[1]);
+            
+         else if (strcmp("NOME-PARA-CITACAO ", args[0]) == 0)
+            printf("NOME-PARA-CITACAO: %s\n", args[1]);
+            
          /** secao integrantes do projeto */
-         if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
+         else if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
+            
+            printf("INTEGRANTES-DO-PROJETO:\n");
             
             do {
             

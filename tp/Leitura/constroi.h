@@ -19,6 +19,10 @@
 #include "../Estrutura/pessoa.h"
 #include "../Estrutura/string.h"
 
+typedef enum {
+   NOME_COMPLETO = 1,
+} Propriedade;
+
 void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo);
 void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo);
 void OrdenaListaDiscente(ListaDiscente **epinicio);
