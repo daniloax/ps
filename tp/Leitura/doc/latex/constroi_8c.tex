@@ -1,0 +1,161 @@
+\hypertarget{constroi_8c}{\section{constroi.\+c File Reference}
+\label{constroi_8c}\index{constroi.\+c@{constroi.\+c}}
+}
+{\ttfamily \#include \char`\"{}constroi.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{constroi_8c_a24fdeb1f6d0a9a3a09f789116eec1624}{Constroi\+Lista\+Projeto} (Lista\+Projeto $\ast$$\ast$epinicio, char $\ast$arquivo)
+\begin{DoxyCompactList}\small\item\em Uma função que constroi uma lista de projetos a partir do arquivo de entrada. \end{DoxyCompactList}\item 
+void \hyperlink{constroi_8c_a8879823cc636fea083f56533b8dd121d}{Constroi\+Lista\+Discente} (Lista\+Discente $\ast$$\ast$epinicio, char $\ast$arquivo)
+\begin{DoxyCompactList}\small\item\em Uma função que constroi uma lista de discentes a partir do arquivo de entrada. \end{DoxyCompactList}\item 
+void \hyperlink{constroi_8c_a4e7245d100de53a64c745e6e785c4833}{Percorre\+Lista\+Discente} (Lista\+Discente $\ast$pinicio)
+\begin{DoxyCompactList}\small\item\em Uma função que percorre a lista de discentes. \end{DoxyCompactList}\item 
+void \hyperlink{constroi_8c_af19955ae67d41515c27d437a02dd9cc7}{Ordena\+Lista\+Discente} (Lista\+Discente $\ast$$\ast$epinicio)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{constroi_8c_a8879823cc636fea083f56533b8dd121d}{\index{constroi.\+c@{constroi.\+c}!Constroi\+Lista\+Discente@{Constroi\+Lista\+Discente}}
+\index{Constroi\+Lista\+Discente@{Constroi\+Lista\+Discente}!constroi.\+c@{constroi.\+c}}
+\subsubsection[{Constroi\+Lista\+Discente}]{\setlength{\rightskip}{0pt plus 5cm}void Constroi\+Lista\+Discente (
+\begin{DoxyParamCaption}
+\item[{Lista\+Discente $\ast$$\ast$}]{epinicio, }
+\item[{char $\ast$}]{arquivo}
+\end{DoxyParamCaption}
+)}}\label{constroi_8c_a8879823cc636fea083f56533b8dd121d}
+
+
+Uma função que constroi uma lista de discentes a partir do arquivo de entrada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$epinicio} & o endereco do ponteiro da lista de discentes. \\
+\hline
+{\em $\ast$arquivo} & um array de caracteres que contem o nome do arquivo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sem retorno. 
+\end{DoxyReturn}
+descarta informacoes de cabecalho do arquivo de entrada ate encontrar a palavra Matricula
+
+filtra informacoes e constroi lista de discentes \hypertarget{constroi_8c_a24fdeb1f6d0a9a3a09f789116eec1624}{\index{constroi.\+c@{constroi.\+c}!Constroi\+Lista\+Projeto@{Constroi\+Lista\+Projeto}}
+\index{Constroi\+Lista\+Projeto@{Constroi\+Lista\+Projeto}!constroi.\+c@{constroi.\+c}}
+\subsubsection[{Constroi\+Lista\+Projeto}]{\setlength{\rightskip}{0pt plus 5cm}void Constroi\+Lista\+Projeto (
+\begin{DoxyParamCaption}
+\item[{Lista\+Projeto $\ast$$\ast$}]{epinicio, }
+\item[{char $\ast$}]{arquivo}
+\end{DoxyParamCaption}
+)}}\label{constroi_8c_a24fdeb1f6d0a9a3a09f789116eec1624}
+
+
+Uma função que constroi uma lista de projetos a partir do arquivo de entrada. 
+
+Arquivo de construcao das listas de discentes, docentes, projetos. \begin{DoxyAuthor}{Author}
+Danilo Alves. 
+
+José Siqueira. 
+\end{DoxyAuthor}
+\begin{DoxySince}{Since}
+01/03/15. 
+\end{DoxySince}
+\begin{DoxyVersion}{Version}
+0.\+0.\+1. 
+\end{DoxyVersion}
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$$\ast$epinicio} & o endereco do ponteiro da lista de projetos. \\
+\hline
+{\em $\ast$arquivo} & um array de caracteres que contem o nome do arquivo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sem retorno. 
+\end{DoxyReturn}
+contador de argumentos do buffer de linha
+
+propriedades e valores dos projetos
+
+valores das propriedades dos projetos
+
+buffer de linha temporario
+
+buffer temporario para integrantes dos projetos
+
+caracter de leitura de arquivo
+
+valor de string entre tokens do buffer de integrantes dos projetos
+
+contador de caracteres do buffer de linha
+
+numero do integrante do projeto
+
+sinaliza leitura de secao de integrantes do projeto
+
+ponteiro auxiliar de lista de projeto
+
+ponteiro auxiliar de lista de projeto
+
+ponteiro de projeto
+
+abre arquivo
+
+inicializa contadores
+
+leitura de linha
+
+adiciona caracter de termino de string
+
+separa buffer de linha
+
+propriedade = valor
+
+secao integrantes do projeto
+
+inicializa sinalizador de secao
+
+inicializa contador
+
+leitura de linha
+
+examina padrao no buffer de linha
+
+separa buffer de integrante
+
+sinaliza secao
+
+integrante = responsavel
+
+entre projetos -\/ nao encontra padrao da secao de integrantes
+
+inicializa contadores
+
+separa buffer de linha
+
+descarta linha \hypertarget{constroi_8c_af19955ae67d41515c27d437a02dd9cc7}{\index{constroi.\+c@{constroi.\+c}!Ordena\+Lista\+Discente@{Ordena\+Lista\+Discente}}
+\index{Ordena\+Lista\+Discente@{Ordena\+Lista\+Discente}!constroi.\+c@{constroi.\+c}}
+\subsubsection[{Ordena\+Lista\+Discente}]{\setlength{\rightskip}{0pt plus 5cm}void Ordena\+Lista\+Discente (
+\begin{DoxyParamCaption}
+\item[{Lista\+Discente $\ast$$\ast$}]{epinicio}
+\end{DoxyParamCaption}
+)}}\label{constroi_8c_af19955ae67d41515c27d437a02dd9cc7}
+\hypertarget{constroi_8c_a4e7245d100de53a64c745e6e785c4833}{\index{constroi.\+c@{constroi.\+c}!Percorre\+Lista\+Discente@{Percorre\+Lista\+Discente}}
+\index{Percorre\+Lista\+Discente@{Percorre\+Lista\+Discente}!constroi.\+c@{constroi.\+c}}
+\subsubsection[{Percorre\+Lista\+Discente}]{\setlength{\rightskip}{0pt plus 5cm}void Percorre\+Lista\+Discente (
+\begin{DoxyParamCaption}
+\item[{Lista\+Discente $\ast$}]{pinicio}
+\end{DoxyParamCaption}
+)}}\label{constroi_8c_a4e7245d100de53a64c745e6e785c4833}
+
+
+Uma função que percorre a lista de discentes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$pinicio} & um ponteiro para o inicio da lista de discentes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+sem retorno. 
+\end{DoxyReturn}
