@@ -20,7 +20,14 @@
 #include "../Estrutura/string.h"
 
 typedef enum {
-   NOME_COMPLETO = 1,
+   NOME_PROJETO = 0,
+   DESCRICAO_PROJETO = 1,
+   ANO_INICIO = 2,
+   SITUACAO = 3,
+   NATUREZA = 4,
+   REALIZADOR = 5,
+   NOMES_CITACAO = 6,
+   INTEGRANTES = 7
 } Propriedade;
 
 void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo);

@@ -24,11 +24,11 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    int argc;
    
    /** propriedades e valores dos projetos */
-   char *args[2]; 
+   char *args[2];
    
-   /** valores das propriedades dos projetos */
+   /** valor da propriedade */
    char *argv;
-   
+
    /** buffer de linha temporario */
    char buffer[256];
    
@@ -40,6 +40,9 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    
    /** valor de string entre tokens do buffer de integrantes dos projetos */
    char *intv;
+   
+   /** valores das propriedades */
+   char *propriedade[8];
    
    /** contador de caracteres do buffer de linha */
    int i;
@@ -99,8 +102,22 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
       
          }
          
-         if (strcmp("NOME-DO-PROJETO ", args[0]) == 0)
-            printf("NOME-DO-PROJETO: %s\n", args[1]);
+         if (strcmp("NOME-DO-PROJETO ", args[0]) == 0) {
+            
+            propriedade[Propriedade.NOME_PROJETO] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[Propriedade.NOME_PROJETO], args[1]);
+            printf("NOME-DO-PROJETO: %s\n", propriedade[Propriedade.NOME_PROJETO]);
+            
+         }
+            
+         /* NOME_PROJETO
+         DESCRICAO_PROJETO
+         ANO_INICIO
+         SITUACAO
+         NATUREZA
+         REALIZADOR
+         NOMES_CITACAO
+         INTEGRANTES */
             
          else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0)
             printf("DESCRICAO-DO-PROJETO: %s\n", args[1]);
