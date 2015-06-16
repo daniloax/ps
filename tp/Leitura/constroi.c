@@ -104,9 +104,9 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
          
          if (strcmp("NOME-DO-PROJETO ", args[0]) == 0) {
             
-            propriedade[Propriedade.NOME_PROJETO] = calloc(strlen(args[1]), sizeof(char));
-            strcpy(propriedade[Propriedade.NOME_PROJETO], args[1]);
-            printf("NOME-DO-PROJETO: %s\n", propriedade[Propriedade.NOME_PROJETO]);
+            propriedade[NOME_PROJETO] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[NOME_PROJETO], args[1]);
+            printf("NOME-DO-PROJETO: %s\n", propriedade[NOME_PROJETO]);
             
          }
             
@@ -119,26 +119,44 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
          NOMES_CITACAO
          INTEGRANTES */
             
-         else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0)
-            printf("DESCRICAO-DO-PROJETO: %s\n", args[1]);
+         else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0) {
             
-         else if (strcmp("ANO-INICIO ", args[0]) == 0)
-            printf("ANO-INICIO: %s\n", args[1]);
+            propriedade[DESCRICAO_PROJETO] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[DESCRICAO_PROJETO], args[1]);
+            printf("DESCRICAO-DO-PROJETO: %s\n", propriedade[DESCRICAO_PROJETO]);
             
-         else if (strcmp("SITUACAO ", args[0]) == 0)
-            printf("SITUACAO: %s\n", args[1]);
+         } else if (strcmp("ANO-INICIO ", args[0]) == 0) {
             
-         else if (strcmp("NATUREZA", args[0]) == 0)
-            printf("NATUREZA: %s\n", args[1]);
+            propriedade[ANO_INICIO] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[ANO_INICIO], args[1]);
+            printf("ANO-INICIO: %s\n", propriedade[ANO_INICIO]);
             
-         else if (strcmp("NOME COMPLETO ", args[0]) == 0)
-            printf("NOME COMPLETO: %s\n", args[1]);
+         } else if (strcmp("SITUACAO ", args[0]) == 0) {
             
-         else if (strcmp("NOME-PARA-CITACAO ", args[0]) == 0)
-            printf("NOME-PARA-CITACAO: %s\n", args[1]);
+            propriedade[SITUACAO] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[SITUACAO], args[1]);
+            printf("SITUACAO: %s\n", propriedade[SITUACAO]);
+            
+         } else if (strcmp("NATUREZA", args[0]) == 0) {
+            
+            propriedade[NATUREZA] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[NATUREZA], args[1]);
+            printf("NATUREZA: %s\n", propriedade[NATUREZA]);
+            
+         } else if (strcmp("NOME COMPLETO ", args[0]) == 0) {
+            
+            propriedade[REALIZADOR] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[REALIZADOR], args[1]);
+            printf("REALIZADOR: %s\n", propriedade[REALIZADOR]);
+            
+         } else if (strcmp("NOME-PARA-CITACAO ", args[0]) == 0) {
+            
+            propriedade[NOME_CITACAO] = calloc(strlen(args[1]), sizeof(char));
+            strcpy(propriedade[NOME_CITACAO], args[1]);
+            printf("NOME-PARA-CITACAO: %s\n", propriedade[NOME_CITACAO]);
             
          /** secao integrantes do projeto */
-         else if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
+         } else if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
             
             printf("INTEGRANTES-DO-PROJETO:\n");
             

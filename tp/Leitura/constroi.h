@@ -26,7 +26,7 @@ typedef enum {
    SITUACAO = 3,
    NATUREZA = 4,
    REALIZADOR = 5,
-   NOMES_CITACAO = 6,
+   NOME_CITACAO = 6,
    INTEGRANTES = 7
 } Propriedade;
 
