@@ -35,9 +35,6 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    /** buffer temporario para integrantes dos projetos */
    char bufferIntegrante[256];
    
-   
-   char bufferPropriedade[256];
-   
    /** caracter de leitura de arquivo */
    char c;
    
