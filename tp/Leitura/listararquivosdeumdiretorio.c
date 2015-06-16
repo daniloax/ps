@@ -2,6 +2,8 @@
 #include <sys/types.h>
 #include <dirent.h>
 
+// Colocar a função fora do main, em que ela receba evento ou periodicos, trocando o que tem dentro do opendir("./");
+
 int main (void)
 {
   DIR *dp;
