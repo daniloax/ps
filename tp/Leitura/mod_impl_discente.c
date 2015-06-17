@@ -153,8 +153,10 @@ void setListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 			
 		}
 		
+		fclose (pArquivo);
+		
 	}
 	
-	fclose (pArquivo);
+	
    
 }
