@@ -16,7 +16,7 @@ void adicionar_testes_mod_impl_discente(void);
 /* Abaixo estão as funções que efetuam os testes para a função setListaDiscente */
 void teste_setListaDiscente_diferente_de_nulo(void);
 void teste_setListaDiscente_arquivo_nao_existe(void);
-void teste_setListaDiscente_arquivo_em_branco(void);
+//void teste_setListaDiscente_arquivo_em_branco(void);
 
 /* Teste arquivo vazio retorna erro */
 void teste_setListaDiscente_diferente_de_nulo(void){
@@ -46,7 +46,8 @@ void teste_setListaDiscente_arquivo_nao_existe(void){
 	CU_ASSERT_PTR_NULL(  pinicio);
 	
 }
-void teste_setListaDiscente_arquivo_em_branco(void){
+
+/*void teste_setListaDiscente_arquivo_em_branco(void){
 	
 	ListaDiscente * pinicio;
 	
@@ -59,7 +60,7 @@ void teste_setListaDiscente_arquivo_em_branco(void){
 	CU_ASSERT_PTR_NULL(  pinicio);
 	
 }
-
+*/
 
 void adicionar_testes_mod_impl_discente(void) {
 	
@@ -72,7 +73,7 @@ void adicionar_testes_mod_impl_discente(void) {
    
    CU_ADD_TEST(suite, teste_setListaDiscente_diferente_de_nulo);
    CU_ADD_TEST(suite, teste_setListaDiscente_arquivo_nao_existe);
-   CU_ADD_TEST(suite, teste_setListaDiscente_arquivo_em_branco);
+   //CU_ADD_TEST(suite, teste_setListaDiscente_arquivo_em_branco);
    
 }
 
