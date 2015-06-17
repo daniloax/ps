@@ -1,9 +1,21 @@
-#ifndef LISTA_H
-#define LISTA_H
+/* 
+Controle visando evitar inclusões múltiplas.
+*/
 
-#include "atividade.h"
-#include "pessoa.h"
-#include "string.h"
+#ifndef MOD_DEF_LISTA
+#define MOD_DEF_LISTA
+
+/* 
+Inclusão de arquivo de módulo de definição.
+*/
+
+#include "mod_def_atividade.h"
+#include "mod_def_pessoa.h"
+#include "mod_def_string.h"
+
+/*
+Definição de estrutura.
+*/
 
 typedef struct ListaIntegrante {
    struct TipoPessoa *integrante;

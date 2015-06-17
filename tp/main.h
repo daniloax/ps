@@ -4,10 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Estrutura/atividade.h"
-#include "Leitura/constroi.h"
-#include "Estrutura/lista.h"
-#include "Estrutura/pessoa.h"
+#include "Estrutura/mod_def_atividade.h"
+#include "Estrutura/mod_def_lista.h"
+#include "Estrutura/mod_def_pessoa.h"
+#include "Leitura/mod_def_projeto.h"
 
 
 int main();

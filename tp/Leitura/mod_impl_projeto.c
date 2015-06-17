@@ -1,14 +1,63 @@
-/*!	
-*	Arquivo de construcao das listas de discentes, docentes, projetos.
-*	\author Danilo Alves.
-* 	\author José Siqueira.
-*	\since 01/03/15.
-*	\version 0.0.1.
-*
+/*
+Declaração visando identificar o módulo como servidor.
 */
 
-#include "constroi.h"
+#define MOD_IMPL_PROJETO
 
+/* 
+Inclusão de arquivo de biblioteca.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* 
+Inclusão de arquivo de módulo de definição.
+*/
+
+#include "mod_def_projeto.h"
+
+/*
+Definição do corpo da função.
+*/
+
+/**
+* Uma função que percorre a lista de projetos.
+* @param *pinicio um ponteiro para o inicio da lista de projetos.
+* @return sem retorno.
+*/
+void getListaProjeto(ListaProjeto *pinicio) {
+	
+	char *nome;
+   
+   ListaProjeto *pp1;
+	TipoProjeto *projeto;
+	
+	pp1 = NULL;
+	
+	projeto = NULL;
+	nome = "/0";
+
+	if (pinicio == NULL)
+		printf("Lista Vazia!");
+		
+	else {
+		
+		pp1 = pinicio;
+
+		while (pp1 != NULL) {
+			
+			projeto = (TipoProjeto *) pp1->projeto;
+         nome = projeto->nome;
+			printf("%s\n", nome);
+			pp1 = pp1->proximoProjeto;
+			
+		}
+
+	}
+	
+}
 
 /**
 * Uma função que constroi uma lista de projetos a partir do arquivo de entrada.
@@ -16,7 +65,7 @@
 * @param *arquivo um array de caracteres que contem o nome do arquivo.
 * @return sem retorno.
 */
-void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
+void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
  
    FILE *pFile;
    
@@ -42,7 +91,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    char *intv;
    
    /** valores das propriedades */
-   char *propriedade[7];
+   char *propriedade[8];
    
    /** contador de caracteres do buffer de linha */
    int i;
@@ -106,43 +155,43 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             
             propriedade[NOME_PROJETO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[NOME_PROJETO], args[1]);
-            printf("NOME-DO-PROJETO: %s\n", propriedade[NOME_PROJETO]);
+            // printf("NOME-DO-PROJETO: %s\n", propriedade[NOME_PROJETO]);
             
          } else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0) {
             
             propriedade[DESCRICAO_PROJETO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[DESCRICAO_PROJETO], args[1]);
-            printf("DESCRICAO-DO-PROJETO: %s\n", propriedade[DESCRICAO_PROJETO]);
+            // printf("DESCRICAO-DO-PROJETO: %s\n", propriedade[DESCRICAO_PROJETO]);
             
          } else if (strcmp("ANO-INICIO ", args[0]) == 0) {
             
             propriedade[ANO_INICIO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[ANO_INICIO], args[1]);
-            printf("ANO-INICIO: %s\n", propriedade[ANO_INICIO]);
+            // printf("ANO-INICIO: %s\n", propriedade[ANO_INICIO]);
             
          } else if (strcmp("SITUACAO ", args[0]) == 0) {
             
             propriedade[SITUACAO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[SITUACAO], args[1]);
-            printf("SITUACAO: %s\n", propriedade[SITUACAO]);
+            // printf("SITUACAO: %s\n", propriedade[SITUACAO]);
             
          } else if (strcmp("NATUREZA", args[0]) == 0) {
             
             propriedade[NATUREZA] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[NATUREZA], args[1]);
-            printf("NATUREZA: %s\n", propriedade[NATUREZA]);
+            // printf("NATUREZA: %s\n", propriedade[NATUREZA]);
             
          } else if (strcmp("NOME COMPLETO ", args[0]) == 0) {
             
             propriedade[REALIZADOR] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[REALIZADOR], args[1]);
-            printf("REALIZADOR: %s\n", propriedade[REALIZADOR]);
+            // printf("REALIZADOR: %s\n", propriedade[REALIZADOR]);
             
          } else if (strcmp("NOME-PARA-CITACAO ", args[0]) == 0) {
             
             propriedade[NOME_CITACAO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[NOME_CITACAO], args[1]);
-            printf("NOME-PARA-CITACAO: %s\n", propriedade[NOME_CITACAO]);
+            // printf("NOME-PARA-CITACAO: %s\n", propriedade[NOME_CITACAO]);
             
          /** secao integrantes do projeto */
          } else if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
@@ -253,252 +302,4 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
       
    }
    
-}
-
-/**
-* Uma função que constroi uma lista de discentes a partir do arquivo de entrada.
-* @param **epinicio o endereco do ponteiro da lista de discentes.
-* @param *arquivo um array de caracteres que contem o nome do arquivo.
-* @return sem retorno.
-*/
-void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo) {
-
-   FILE *pArquivo;
-   
-   char separador;
-   char buffer[78];
-   char nome[30];
-
-	int anoMatricula;
-	int matricula;
-	
-	ListaDiscente *pd1;
-	ListaDiscente *pd2;
-	
-   TipoPessoa *discente;
-
-   pArquivo = fopen(arquivo, "r");
-
-   if (!pArquivo)
-      printf("'%s' not exist\n", arquivo);
-
-   else {
-		
-		/** descarta informacoes de cabecalho do arquivo de entrada 
-       *  ate encontrar a palavra Matricula */
-		while (strcmp("Matricula", nome) != 0) {
-				
-			fgets(buffer, sizeof(buffer), pArquivo);
-			sscanf(buffer,"%s", &nome);
-			
-		}
-		
-		/** filtra informacoes e constroi lista de discentes */
-		while ((fgets(buffer, sizeof(buffer), pArquivo)) != NULL ) {
-			
-			if (sscanf(buffer,"%d%c%d %[^\n]s", &anoMatricula, &separador, &matricula, nome) == 4) {
-				
-				discente = malloc(sizeof(TipoPessoa));
-				 
-				discente->anoMatricula = anoMatricula;
-				discente->matricula = matricula;
-				
-            discente->nome = calloc(strlen(nome), sizeof(char));
-            strcpy(discente->nome, nome);
-				
-				pd1 = malloc(sizeof(ListaDiscente));
-				
-				pd1->discente = discente;
-				pd1->proximoDiscente = NULL;
-				
-				if (*epinicio == NULL)
-					*epinicio = pd1;
-				
-				else
-					pd2->proximoDiscente = pd1;
-					
-				pd2 = pd1;
-				
-				while (getc(pArquivo) != 10);
-		
-			}
-			
-		}
-		
-	}
-	
-	fclose (pArquivo);
-
-}
-
-/**
-* Uma função que percorre a lista de discentes.
-* @param *pinicio um ponteiro para o inicio da lista de discentes.
-* @return sem retorno.
-*/
-void PercorreListaDiscente(ListaDiscente *pinicio) {
-	
-	int matricula;
-	int anoMatricula;
-	
-	ListaDiscente *pd1;
-	
-	TipoPessoa *discente;
-	char *nome;
-	
-	matricula = 0;
-	anoMatricula = 0;
-	
-	pd1 = NULL;
-	
-	discente = NULL;
-	nome = "/0";
-
-	if (pinicio == NULL)
-		printf("Lista Vazia!");
-		
-	else {
-		
-		pd1 = pinicio;
-
-		while (pd1 != NULL) {
-			
-			discente = (TipoPessoa *) pd1->discente;
-			nome = discente->nome;
-			anoMatricula = discente->anoMatricula;
-			matricula = discente->matricula;
-			printf("%02d/%07d %s\n", anoMatricula, matricula, nome);
-			pd1 = pd1->proximoDiscente;
-			
-		}
-
-	}
-	
-}
-
-/**
-* Uma função que percorre a lista de projetos.
-* @param *pinicio um ponteiro para o inicio da lista de projetos.
-* @return sem retorno.
-*/
-void PercorreListaProjeto(ListaProjeto *pinicio) {
-	
-	char *nome;
-   
-   ListaProjeto *pp1;
-	TipoProjeto *projeto;
-	
-	pp1 = NULL;
-	
-	projeto = NULL;
-	nome = "/0";
-
-	if (pinicio == NULL)
-		printf("Lista Vazia!");
-		
-	else {
-		
-		pp1 = pinicio;
-
-		while (pp1 != NULL) {
-			
-			projeto = (TipoProjeto *) pp1->projeto;
-         nome = projeto->nome;
-			printf("%s\n", nome);
-			pp1 = pp1->proximoProjeto;
-			
-		}
-
-	}
-	
-}
-
-void OrdenaListaDiscente(ListaDiscente **epinicio) {
-   
-   int comparaNome;
-   
-   ListaDiscente *p1;
-   ListaDiscente *p2;
-   ListaDiscente *paux;
-   
-   TipoPessoa *d1;
-   TipoPessoa *d2;
-
-   if (*epinicio != NULL)  {
-      
-      p1 = *epinicio;
-      
-      while (p1->proximoDiscente != NULL) {
-         
-         d1 = p1->discente;
-         p2 = p1->proximoDiscente;
-      
-         while (p2 != NULL) {
-            
-            d2 = p2->discente;
-            comparaNome = strcmp(d1->nome, d2->nome);
-         
-            if (comparaNome > 0) {
-               
-               if (p1->proximoDiscente == p2) {
-                  
-                  p1->proximoDiscente = p2->proximoDiscente;
-                  /* p2->ant = p1->ant;
-                  
-                  if (!(p2->prox == NULL))
-                     p2->prox->ant = p1;
-                  
-                  if (!(p1->ant == NULL))
-                     p1->ant->prox = p2; */
-                  
-                  p2->proximoDiscente = p1;
-                  // p1->ant = p2;
-                  
-                  if (*epinicio == p1)
-                     *epinicio = p2;
-                  
-                  paux = p1;
-                  p1 = p2;
-                  p2 = paux;
-               
-               } else {
-                  
-                  /* p2->ant->prox = p1;
-                  p1->prox->ant = p2;
-                  
-                  if (!(p2->prox == NULL))
-                     p2->prox->ant = p1;
-                  
-                  if (!(p1->ant == NULL))
-                     p1->ant->prox = p2;
-                  
-                  paux = p1->ant;
-                  
-                  p1->ant = p2->ant;
-                  p2->ant = paux; */
-                  paux = p1->proximoDiscente;
-                  p1->proximoDiscente = p2->proximoDiscente;
-                  p2->proximoDiscente = paux;
-                  
-                  if (*epinicio == p1)
-                     *epinicio = p2;
-                  
-                  paux = p1;
-                  p1 = p2;
-                  p2 = paux;        
-               
-               }
-            
-            }  
-            
-            p2 = p2->proximoDiscente;  
-         
-         }
-         
-         p1 = p1->proximoDiscente;  
-      
-      }
-   
-   }
-
 }

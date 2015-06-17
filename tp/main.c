@@ -14,14 +14,14 @@ int main() {
    pInicioDocentes = NULL;
    pInicioProjetos = NULL;
    
-   ConstroiListaDiscente(&pInicioDiscentes, discentesMestrado);
-   ConstroiListaDiscente(&pInicioDiscentes, discentesDoutorado);
-   ConstroiListaProjeto(&pInicioProjetos, projetos);
+   setListaDiscente(&pInicioDiscentes, discentesMestrado);
+   setListaDiscente(&pInicioDiscentes, discentesDoutorado);
+   setListaProjeto(&pInicioProjetos, projetos);
    
    // OrdenaListaDiscente(&pInicioDiscentes);
    // PercorreListaDiscente(pInicioDiscentes);
    
-   PercorreListaProjeto(pInicioProjetos);
+   getListaProjeto(pInicioProjetos);
    
    return 0;
    

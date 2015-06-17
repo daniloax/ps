@@ -1,9 +1,21 @@
-#ifndef ATIVIDADE_H
-#define ATIVIDADE_H
+/* 
+Controle visando evitar inclusões múltiplas.
+*/
 
-#include "lista.h"
-#include "pessoa.h"
-#include "string.h"
+#ifndef MOD_DEF_ATIVIDADE
+#define MOD_DEF_ATIVIDADE
+
+/* 
+Inclusão de arquivo de módulo de definição.
+*/
+
+#include "mod_def_lista.h"
+#include "mod_def_pessoa.h"
+#include "mod_def_string.h"
+
+/*
+Definição de estrutura
+*/
 
 typedef enum {
    EM_ANDAMENTO = 1
@@ -13,7 +25,7 @@ typedef enum {
    PESQUISA = 1
 } Natureza;
 
-typedef struct Projeto {
+typedef struct TipoProjeto {
    struct TipoString *nome;
    struct TipoString *descricao;
    struct TipoString *situacao;
