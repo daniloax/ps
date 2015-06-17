@@ -16,9 +16,9 @@ typedef enum {
 typedef struct Projeto {
    struct TipoString *nome;
    struct TipoString *descricao;
-   Situacao situacao;
-   Natureza natureza;
-   int anoInicio;
+   struct TipoString *situacao;
+   struct TipoString *natureza;
+   struct TipoString *anoInicio;
    int anoFim;
    int mesFim;
    struct Pessoa *realizador;

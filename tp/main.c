@@ -12,7 +12,7 @@ int main() {
    
    pInicioDiscentes = NULL;
    pInicioDocentes = NULL;
-   pInicioDocentes = NULL;
+   pInicioProjetos = NULL;
    
    ConstroiListaDiscente(&pInicioDiscentes, discentesMestrado);
    ConstroiListaDiscente(&pInicioDiscentes, discentesDoutorado);
@@ -21,7 +21,7 @@ int main() {
    // OrdenaListaDiscente(&pInicioDiscentes);
    // PercorreListaDiscente(pInicioDiscentes);
    
-   
+   PercorreListaProjeto(pInicioProjetos);
    
    return 0;
    

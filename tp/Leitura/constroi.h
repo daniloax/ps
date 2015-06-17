@@ -34,5 +34,6 @@ void ConstroiListaDiscente(ListaDiscente **epinicio, char *arquivo);
 void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo);
 void OrdenaListaDiscente(ListaDiscente **epinicio);
 void PercorreListaDiscente(ListaDiscente *pinicio);
+void PercorreListaProjeto(ListaProjeto *pinicio);
 
 #endif /* CONSTROI_H_ */

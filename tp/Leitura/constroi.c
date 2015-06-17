@@ -42,7 +42,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    char *intv;
    
    /** valores das propriedades */
-   char *propriedade[8];
+   char *propriedade[7];
    
    /** contador de caracteres do buffer de linha */
    int i;
@@ -108,18 +108,7 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             strcpy(propriedade[NOME_PROJETO], args[1]);
             printf("NOME-DO-PROJETO: %s\n", propriedade[NOME_PROJETO]);
             
-         }
-            
-         /* NOME_PROJETO
-         DESCRICAO_PROJETO
-         ANO_INICIO
-         SITUACAO
-         NATUREZA
-         REALIZADOR
-         NOMES_CITACAO
-         INTEGRANTES */
-            
-         else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0) {
+         } else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0) {
             
             propriedade[DESCRICAO_PROJETO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[DESCRICAO_PROJETO], args[1]);
@@ -220,6 +209,39 @@ void ConstroiListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                }
                
             } while (flagIntegrantes);
+            
+            projeto = malloc(sizeof(TipoProjeto));
+            
+            projeto->nome = calloc(strlen(propriedade[NOME_PROJETO]), sizeof(char));
+            strcpy(projeto->nome, propriedade[NOME_PROJETO]);
+            
+            projeto->descricao = calloc(strlen(propriedade[DESCRICAO_PROJETO]), sizeof(char));
+            strcpy(projeto->descricao, propriedade[DESCRICAO_PROJETO]);
+            
+            projeto->anoInicio = calloc(strlen(propriedade[ANO_INICIO]), sizeof(char));
+            strcpy(projeto->anoInicio, propriedade[ANO_INICIO]);
+            
+            projeto->situacao = calloc(strlen(propriedade[SITUACAO]), sizeof(char));
+            strcpy(projeto->situacao, propriedade[SITUACAO]);
+            
+            projeto->natureza = calloc(strlen(propriedade[NATUREZA]), sizeof(char));
+            strcpy(projeto->natureza, propriedade[NATUREZA]);
+            
+            projeto->realizador = calloc(strlen(propriedade[REALIZADOR]), sizeof(char));
+            strcpy(projeto->realizador, propriedade[REALIZADOR]);
+            
+            pp1 = malloc(sizeof(ListaProjeto));
+            
+            pp1->projeto = projeto;
+				pp1->proximoProjeto = NULL;
+				
+				if (*epinicio == NULL)
+					*epinicio = pp1;
+				
+				else
+					pp2->proximoProjeto = pp1;
+					
+				pp2 = pp1;
             
          }
          
@@ -347,6 +369,43 @@ void PercorreListaDiscente(ListaDiscente *pinicio) {
 			matricula = discente->matricula;
 			printf("%02d/%07d %s\n", anoMatricula, matricula, nome);
 			pd1 = pd1->proximoDiscente;
+			
+		}
+
+	}
+	
+}
+
+/**
+* Uma função que percorre a lista de projetos.
+* @param *pinicio um ponteiro para o inicio da lista de projetos.
+* @return sem retorno.
+*/
+void PercorreListaProjeto(ListaProjeto *pinicio) {
+	
+	char *nome;
+   
+   ListaProjeto *pp1;
+	TipoProjeto *projeto;
+	
+	pp1 = NULL;
+	
+	projeto = NULL;
+	nome = "/0";
+
+	if (pinicio == NULL)
+		printf("Lista Vazia!");
+		
+	else {
+		
+		pp1 = pinicio;
+
+		while (pp1 != NULL) {
+			
+			projeto = (TipoProjeto *) pp1->projeto;
+         nome = projeto->nome;
+			printf("%s\n", nome);
+			pp1 = pp1->proximoProjeto;
 			
 		}
 
