@@ -1,3 +1,11 @@
+/* 
+Inclusão de biblioteca do compilador.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 /*
 Declaração visando identificar o módulo como servidor.
 */
@@ -5,21 +13,19 @@ Declaração visando identificar o módulo como servidor.
 #define MOD_IMPL_DISCENTE
 
 /* 
-Inclusão de arquivo de biblioteca.
-*/
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-/* 
-Inclusão de arquivo de módulo de definição.
+Inclusão de módulo de definição.
 */
 
 #include "mod_def_discente.h"
 
+/* 
+Termina processamento de módulo de implementação.
+*/
+
+#undef MOD_IMPL_DISCENTE
+
 /*
-Definição do corpo da função.
+Definição de corpo de função.
 */
 
 /**
@@ -96,7 +102,7 @@ void setListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 
    else {
 		
-		/** descarta informacoes de cabecalho do arquivo de entrada 
+		/* descarta informacoes de cabecalho do arquivo de entrada 
        *  ate encontrar a palavra Matricula */
 		while (strcmp("Matricula", nome) != 0) {
 				
@@ -105,7 +111,7 @@ void setListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 			
 		}
 		
-		/** filtra informacoes e constroi lista de discentes */
+		/* filtra informacoes e constroi lista de discentes */
 		while ((fgets(buffer, sizeof(buffer), pArquivo)) != NULL ) {
 			
 			if (sscanf(buffer,"%d%c%d %[^\n]s", &anoMatricula, &separador, &matricula, nome) == 4) {

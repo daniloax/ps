@@ -6,12 +6,6 @@ Controle visando evitar inclusões múltiplas.
 #define MOD_DEF_PROJETO
 
 /* 
-Inclusão de arquivo de módulo de definição.
-*/
-
-#include "../Estrutura/mod_def_lista.h"
-
-/* 
 Controle visando identificar o servidor.
 */
 
@@ -21,12 +15,11 @@ Controle visando identificar o servidor.
 #define EXT_MOD_DEF_PROJETO extern
 #endif
 
-/*
-Declarações dos protótipos das funções.
+/* 
+Inclusão de módulo de definição.
 */
 
-EXT_MOD_DEF_PROJETO void getListaProjeto(ListaProjeto *pinicio);
-EXT_MOD_DEF_PROJETO void setListaProjeto(ListaProjeto **epinicio, char *arquivo);
+#include "../Estrutura/mod_def_lista.h"
 
 /*
 Enumerações de propriedades de projeto.
@@ -42,5 +35,14 @@ typedef enum {
    NOME_CITACAO = 6,
    INTEGRANTES = 7
 } Propriedade;
+
+/*
+Declaração de protótipo de funções.
+*/
+
+EXT_MOD_DEF_PROJETO void getListaProjeto(ListaProjeto *pinicio);
+EXT_MOD_DEF_PROJETO void setListaProjeto(ListaProjeto **epinicio, char *arquivo);
+
+#undef EXT_MOD_DEF_PROJETO
 
 #endif

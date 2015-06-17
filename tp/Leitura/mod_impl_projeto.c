@@ -1,3 +1,11 @@
+/* 
+Inclusão de biblioteca do compilador.
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 /*
 Declaração visando identificar o módulo como servidor.
 */
@@ -5,18 +13,16 @@ Declaração visando identificar o módulo como servidor.
 #define MOD_IMPL_PROJETO
 
 /* 
-Inclusão de arquivo de biblioteca.
-*/
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-/* 
-Inclusão de arquivo de módulo de definição.
+Inclusão de módulo de definição.
 */
 
 #include "mod_def_projeto.h"
+
+/* 
+Termina processamento de módulo de implementação.
+*/
+
+#undef MOD_IMPL_PROJETO
 
 /*
 Definição do corpo da função.
@@ -69,49 +75,49 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
  
    FILE *pFile;
    
-   /** contador de argumentos do buffer de linha */
+   /* contador de argumentos do buffer de linha */
    int argc;
    
-   /** propriedades e valores dos projetos */
+   /* propriedades e valores dos projetos */
    char *args[2];
    
-   /** valor da propriedade */
+   /* valor da propriedade */
    char *argv;
 
-   /** buffer de linha temporario */
+   /* buffer de linha temporario */
    char buffer[256];
    
-   /** buffer temporario para integrantes dos projetos */
+   /* buffer temporario para integrantes dos projetos */
    char bufferIntegrante[256];
    
-   /** caracter de leitura de arquivo */
+   /* caracter de leitura de arquivo */
    char c;
    
-   /** valor de string entre tokens do buffer de integrantes dos projetos */
+   /* valor de string entre tokens do buffer de integrantes dos projetos */
    char *intv;
    
-   /** valores das propriedades */
+   /* valores das propriedades */
    char *propriedade[8];
    
-   /** contador de caracteres do buffer de linha */
+   /* contador de caracteres do buffer de linha */
    int i;
    
-   /** numero do integrante do projeto */
+   /* numero do integrante do projeto */
    int integrante;
    
-   /** sinaliza leitura de secao de integrantes do projeto */
+   /* sinaliza leitura de secao de integrantes do projeto */
    int flagIntegrantes;
    
-   /** ponteiro auxiliar de lista de projeto */
+   /* ponteiro auxiliar de lista de projeto */
    ListaProjeto *pp1;
    
-   /** ponteiro auxiliar de lista de projeto */
+   /* ponteiro auxiliar de lista de projeto */
 	ListaProjeto *pp2;
 	
-   /** ponteiro de projeto */
+   /* ponteiro de projeto */
    TipoProjeto *projeto;
    
-   /** abre arquivo */
+   /* abre arquivo */
    pFile = fopen(arquivo, "r");
    
    if (!pFile)
@@ -123,11 +129,11 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
       
       while ((c = getc(pFile)) != EOF) {
       
-         /** inicializa contadores */
+         /* inicializa contadores */
          argc = 0;
          i = 0;
          
-         /** leitura de linha */
+         /* leitura de linha */
          do {
             
             buffer[i] = c;
@@ -135,13 +141,13 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
          
          } while (((c = getc(pFile)) != '\n') && (c != EOF));
          
-         /** adiciona caracter de termino de string */
+         /* adiciona caracter de termino de string */
          buffer[i] = '\0';
          
-         /** separa buffer de linha */
+         /* separa buffer de linha */
          argv = strtok(buffer, "=");
          
-         /** propriedade = valor */
+         /* propriedade = valor */
          while (argv != NULL) {
          
             args[argc] = argv;
@@ -193,20 +199,20 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             strcpy(propriedade[NOME_CITACAO], args[1]);
             // printf("NOME-PARA-CITACAO: %s\n", propriedade[NOME_CITACAO]);
             
-         /** secao integrantes do projeto */
+         /* secao integrantes do projeto */
          } else if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
             
             printf("INTEGRANTES-DO-PROJETO:\n");
             
             do {
             
-               /** inicializa sinalizador de secao */
+               /* inicializa sinalizador de secao */
                flagIntegrantes = 0;
                
-               /** inicializa contador */
+               /* inicializa contador */
                i = 0;
                
-               /** leitura de linha */
+               /* leitura de linha */
                do {
 
                   buffer[i] = c;
@@ -216,19 +222,19 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                
                buffer[i] = '\0';
                
-               /** examina padrao no buffer de linha */
+               /* examina padrao no buffer de linha */
                if (sscanf(buffer, "%d%[^\n]s", &integrante, &bufferIntegrante) == 2) {
                   
                   printf("%d\n", integrante);
                   
-                  /** separa buffer de integrante */
+                  /* separa buffer de integrante */
                   intv = strtok(bufferIntegrante, " ="  );
                   
-                  /** sinaliza secao */
+                  /* sinaliza secao */
                   if (strcmp("NOME-COMPLETO", intv) == 0)
                      flagIntegrantes = 1;
                   
-                  /** integrante = responsavel */
+                  /* integrante = responsavel */
                   while (intv != NULL) {
 
                      printf("%s\n", intv);
@@ -236,17 +242,17 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                
                   }
                   
-               /** entre projetos - nao encontra padrao da secao de integrantes */
+               /* entre projetos - nao encontra padrao da secao de integrantes */
                } else {
                   
-                  /** inicializa contadores */
+                  /* inicializa contadores */
                   argc = 0;
                   i = 0;
                   
-                  /** separa buffer de linha */
+                  /* separa buffer de linha */
                   argv = strtok(buffer, "=");
 
-                  /** descarta linha */
+                  /* descarta linha */
                   while (argv != NULL) {
          
                      args[argc] = argv;
