@@ -9,7 +9,7 @@ Controle visando evitar inclusões múltiplas.
 Inclusão de arquivo de módulo de definição.
 */
 
-#include "mod_def_lista.h"
+#include "../Estrutura/mod_def_lista.h"
 
 /* 
 Controle visando identificar o servidor.
