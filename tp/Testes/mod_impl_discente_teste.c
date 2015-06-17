@@ -18,7 +18,7 @@ void teste_setListaDiscente_diferente_de_nulo(void);
 void teste_setListaDiscente_arquivo_nao_existe(void);
 //void teste_setListaDiscente_arquivo_em_branco(void);
 
-/* Teste arquivo vazio retorna erro */
+/* Testa ponteiro não vazio após a chamada da função */
 void teste_setListaDiscente_diferente_de_nulo(void){
 	
 	ListaDiscente * pinicio;
@@ -33,6 +33,7 @@ void teste_setListaDiscente_diferente_de_nulo(void){
 	
 }
 
+/* Teste arquivo nao existe, o ponteiro pinicio deve sair nulo */
 void teste_setListaDiscente_arquivo_nao_existe(void){
 	
 	ListaDiscente * pinicio;
