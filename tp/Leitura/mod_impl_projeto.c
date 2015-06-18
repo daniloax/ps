@@ -113,7 +113,7 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    int i;
    
    /* numero do integrante do projeto */
-   int integrante;
+   int numeroIntegrante;
    
    /* sinaliza leitura de secao de integrantes do projeto */
    int flagIntegrantes;
@@ -123,6 +123,15 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    
    /* ponteiro auxiliar de lista de projeto */
 	ListaProjeto *pp2;
+   
+   /* ponteiro auxiliar de lista de integrante */
+   ListaProjeto *pi1;
+   
+   /* ponteiro auxiliar de lista de integrante */
+	ListaProjeto *pi2;
+   
+   /* ponteiro de integrante */
+   TipoPessoa *integrante;
 	
    /* ponteiro de projeto */
    TipoProjeto *projeto;
@@ -171,43 +180,43 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             
             propriedade[NOME_PROJETO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[NOME_PROJETO], args[1]);
-            // printf("NOME-DO-PROJETO: %s\n", propriedade[NOME_PROJETO]);
+            printf("NOME-DO-PROJETO: %s\n", propriedade[NOME_PROJETO]);
             
          } else if (strcmp("DESCRICAO-DO-PROJETO", args[0]) == 0) {
             
             propriedade[DESCRICAO_PROJETO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[DESCRICAO_PROJETO], args[1]);
-            // printf("DESCRICAO-DO-PROJETO: %s\n", propriedade[DESCRICAO_PROJETO]);
+            printf("DESCRICAO-DO-PROJETO: %s\n", propriedade[DESCRICAO_PROJETO]);
             
          } else if (strcmp("ANO-INICIO ", args[0]) == 0) {
             
             propriedade[ANO_INICIO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[ANO_INICIO], args[1]);
-            // printf("ANO-INICIO: %s\n", propriedade[ANO_INICIO]);
+            printf("ANO-INICIO: %s\n", propriedade[ANO_INICIO]);
             
          } else if (strcmp("SITUACAO ", args[0]) == 0) {
             
             propriedade[SITUACAO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[SITUACAO], args[1]);
-            // printf("SITUACAO: %s\n", propriedade[SITUACAO]);
+            printf("SITUACAO: %s\n", propriedade[SITUACAO]);
             
          } else if (strcmp("NATUREZA", args[0]) == 0) {
             
             propriedade[NATUREZA] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[NATUREZA], args[1]);
-            // printf("NATUREZA: %s\n", propriedade[NATUREZA]);
+            printf("NATUREZA: %s\n", propriedade[NATUREZA]);
             
          } else if (strcmp("NOME COMPLETO ", args[0]) == 0) {
             
             propriedade[REALIZADOR] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[REALIZADOR], args[1]);
-            // printf("REALIZADOR: %s\n", propriedade[REALIZADOR]);
+            printf("REALIZADOR: %s\n", propriedade[REALIZADOR]);
             
          } else if (strcmp("NOME-PARA-CITACAO ", args[0]) == 0) {
             
             propriedade[NOME_CITACAO] = calloc(strlen(args[1]), sizeof(char));
             strcpy(propriedade[NOME_CITACAO], args[1]);
-            // printf("NOME-PARA-CITACAO: %s\n", propriedade[NOME_CITACAO]);
+            printf("NOME-PARA-CITACAO: %s\n", propriedade[NOME_CITACAO]);
             
          /* secao integrantes do projeto */
          } else if (strcmp("INTEGRANTES-DO-PROJETO", buffer) == 0) {
@@ -233,9 +242,9 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
                buffer[i] = '\0';
                
                /* examina padrao no buffer de linha */
-               if (sscanf(buffer, "%d%[^\n]s", &integrante, &bufferIntegrante) == 2) {
+               if (sscanf(buffer, "%d%[^\n]s", &numeroIntegrante, &bufferIntegrante) == 2) {
                   
-                  printf("%d\n", integrante);
+                  // printf("%d\n", numeroIntegrante);
                   
                   /* separa buffer de integrante */
                   intv = strtok(bufferIntegrante, " ="  );
