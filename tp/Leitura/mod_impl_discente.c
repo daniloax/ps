@@ -103,14 +103,18 @@ void setListaDiscente(ListaDiscente **epinicio, char *arquivo) {
 	ListaDiscente *pd1;
 	ListaDiscente *pd2;
 	
-   TipoPessoa *discente;
+    TipoPessoa *discente;
 
-   pArquivo = fopen(arquivo, "r");
+    pArquivo = fopen(arquivo, "r");
 
-   if (!pArquivo)
-      printf("'%s' not exist\n", arquivo);
-
-   else {
+    //if (!pArquivo)
+    //   printf("'%s' not exist\n", arquivo);
+    
+	c = fgetc(pArquivo);
+	
+	if(ferror(pArquivo))
+		printf("Arquivo '%s' vazio\n", arquivo);
+    else {
 		
 		/* descarta informacoes de cabecalho do arquivo de entrada 
        *  ate encontrar a palavra Matricula */
