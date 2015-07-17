@@ -96,6 +96,7 @@ void setListaDiscente(ListaDiscente **epinicio, char *arquivo) {
    char separador;
    char buffer[78];
    char nome[30];
+   char c; //SERA QUE EH ISSO AQUI
 
 	int anoMatricula;
 	int matricula;
@@ -110,7 +111,7 @@ void setListaDiscente(ListaDiscente **epinicio, char *arquivo) {
     //if (!pArquivo)
     //   printf("'%s' not exist\n", arquivo);
     
-	c = fgetc(pArquivo);
+	//c = fgetc(pArquivo); SEM ISSO AQUI FUNCIONA MELHOR
 	
 	if(ferror(pArquivo))
 		printf("Arquivo '%s' vazio\n", arquivo);
