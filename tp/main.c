@@ -41,6 +41,16 @@ int main() {
    getListaProjeto(pInicioProjetos);
    getListaProjeto(&pInicioProjetos); // Imprime lista de nomes do mestrado e doutorado
    
+   typedef struct Elemento_{
+	   
+   }Elemento;
+   
+   typedef struct Grafo_{
+	   
+   }grafo;
+   
+   
+   
    return 0;
    
 }
