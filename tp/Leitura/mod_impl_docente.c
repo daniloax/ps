@@ -53,6 +53,80 @@ void getListaDocente(ListaDocente *pinicio) {
 * @param *arquivo um array de caracteres que contem o nome do arquivo.
 * @return sem retorno.
 */
-void setListaDiscente(ListaDiscente **epinicio, char *arquivo) {
+void setListaDocente(ListaDiscente **epinicio, char *arquivo) {
+   
+   FILE *pArquivo;
+   
+   char separador;
+   char buffer[78];
+   char nome[30];
+   char c; //SERA QUE EH ISSO AQUI
 
+	int anoMatricula;
+	int matricula;
+	
+	ListaDocente *pd1;
+	ListaDocente *pd2;
+	
+    TipoPessoa *docente;
+
+    pArquivo = fopen(arquivo, "r");
+
+    //if (!pArquivo)
+    //   printf("'%s' not exist\n", arquivo);
+    
+	//c = fgetc(pArquivo); SEM ISSO AQUI FUNCIONA MELHOR
+	
+	if(ferror(pArquivo))
+		printf("Arquivo '%s' vazio\n", arquivo);
+    else {
+		
+		/* descarta informacoes de cabecalho do arquivo de entrada 
+       *  ate encontrar a palavra Matricula */
+		while (strcmp("Matricula", nome) != 0) {
+				
+			fgets(buffer, sizeof(buffer), pArquivo);
+			sscanf(buffer,"%s", &nome);
+			
+		}
+		
+		/* filtra informacoes e constroi lista de discentes */
+		while ((fgets(buffer, sizeof(buffer), pArquivo)) != NULL ) {
+			
+			if (sscanf(buffer,"%d%c%d %[^\n]s", &anoMatricula, &separador, &matricula, nome) == 4) {
+				
+				discente = malloc(sizeof(TipoPessoa));
+				 
+				discente->anoMatricula = anoMatricula;
+				discente->matricula = matricula;
+				
+            discente->nome = calloc(strlen(nome), sizeof(char));
+            strcpy(discente->nome, nome);
+				
+				pd1 = malloc(sizeof(ListaDiscente));
+				
+				pd1->discente = discente;
+				pd1->proximoDiscente = NULL;
+				
+				if (*epinicio == NULL)
+					*epinicio = pd1;
+				
+				else
+					pd2->proximoDiscente = pd1;
+					
+				pd2 = pd1;
+				
+				while (getc(pArquivo) != 10);
+		
+			}
+			
+		}
+		
+		fclose (pArquivo);
+		
+	}
+	
+	
+   
 }
+

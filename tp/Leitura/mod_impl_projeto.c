@@ -142,7 +142,7 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    //if (!pFile)
    //   printf("'%s' not exist\n", arquivo);
    
-   c = fgetc(pFile);
+   //c = fgetc(pFile);
    
    if(ferror(pFile))
       printf("Arquivo '%s' vazio\n", arquivo);

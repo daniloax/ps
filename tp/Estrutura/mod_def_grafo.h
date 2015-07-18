@@ -26,7 +26,10 @@ Controle visando identificar o servidor.
 #endif
 
 
-#include <stdio.h>
+/* 
+Inclusão de módulo de definição.
+*/
+#include "mod_def_lista.h"
 
 
 /*

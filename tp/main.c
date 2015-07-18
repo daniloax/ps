@@ -39,7 +39,7 @@ int main() {
    // PercorreListaDiscente(pInicioDiscentes);
    
    getListaProjeto(pInicioProjetos);
-   getListaProjeto(&pInicioProjetos); // Imprime lista de nomes do mestrado e doutorado
+   //getListaProjeto(&pInicioProjetos); // Imprime lista de nomes do mestrado e doutorado
    
    typedef struct Elemento_{
 	   

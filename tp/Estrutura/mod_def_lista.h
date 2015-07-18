@@ -52,4 +52,13 @@ typedef struct ListaDocente {
    struct ListaDocente *proximoDocente;
 } ListaDocente;
 
+/* Para pevento.c */
+/*
+typedef struct ListaPEvento {
+	struct TipoPEvento *pevento;
+	struct ListaPEvento *proximoPEvento;
+} ListaPEvento;
+*/
+
+
 #endif

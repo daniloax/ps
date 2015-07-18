@@ -36,3 +36,23 @@ typedef struct graphCDT {
 /* 
 Definição de funções 
 */
+
+void constroiGrafo(){
+	
+}
+
+void imprimeRelacionamento() {
+	
+}
+
+
+/*
+Saída:
+
+Grafo de relacionamentos:
+GENAINA NUNES RODRIGUES: A. ZAGHETTO, C. RALHA, V. ALVES
+ALEXANDRE ZAGHETTO: B. MACHIAVELLO, C. RALHA.
+
+NOME: NOME_CITACAO, NOME_CITACAO, NOME_CITACAO
+NOME: NOME_CITACAO, NOME_CITACAO, NOME_CITACAO
+*/
