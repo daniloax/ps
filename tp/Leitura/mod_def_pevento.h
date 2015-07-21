@@ -50,8 +50,8 @@ typedef enum {
 Declaração de protótipo de função.
 */
 
-EXT_MOD_DEF_PEVENTO void getListaDocente(ListaDocente *pinicio);
-EXT_MOD_DEF_PEVENTO void setListaDocente(ListaDocente **epinicio, char *arquivo);
+EXT_MOD_DEF_PEVENTO void getListaPEvento(ListaPEvento *pinicio);
+EXT_MOD_DEF_PEVENTO void setListaPEvento(ListaPEvento **epinicio, char *arquivo);
 
 #undef EXT_MOD_DEF_PEVENTO
 

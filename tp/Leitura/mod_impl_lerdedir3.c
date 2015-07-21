@@ -2,8 +2,7 @@
 #include <dirent.h>
 #include <string.h>
 
-void lerdedir(char *diretorio, char **arquivo){
-
+int main(){
 
 DIR *dir;
 struct dirent *ent;
@@ -15,19 +14,19 @@ typedef struct ListaArquivos_{
 }ListaArquivos;
 */
 
-//char *arq1;
-//char *arq2;
+char *arq1;
+char *arq2;
 
-//if ((dir = opendir ("/home/josephkzez/Workspace/ps/tp/Arquivos")) != NULL) {
-if ((dir = opendir (diretorio)) != NULL) {
-  /* print all the files and directories within directory */
+if ((dir = opendir ("/home/josephkzez/Workspace/ps/tp/Arquivos")) != NULL) {
+
+  /* imprimir todos os arquivos e diretorios dentro do diretorio*/
   while ((ent = readdir (dir)) != NULL) {
 	    if (!strcmp (ent->d_name, "."))
             continue;
         if (!strcmp (ent->d_name, ".."))    
             continue;
     
-    /*
+    
     if (!strcmp (ent->d_name, "publicacao_eventos.txt")){
 		arq1 = ent->d_name;
 	}
@@ -39,32 +38,13 @@ if ((dir = opendir (diretorio)) != NULL) {
   }
   printf("\n Publicacao Eventos : %s", arq1);
   printf("\n Publicacao Periodico : %s\n", arq2);
-  */
-      if (!strcmp (ent->d_name, *arquivo)){
-		*arquivo = ent->d_name;
-	}
-}
+  
+	
+
   closedir (dir);
 } else {
-  /* could not open directory */
+  /* Nao foi possivel abrir o diretorio */
   perror ("");
-  //return -1;
+  return -1;
 }
-
-}
-
-int main(){
-	
-	char *dir;
-	char *arq;
-	
-	char diretorio[] = "/home/josephkzez/Workspace/ps/tp/Arquivos";
-	char arquivo[] = "publicacao_eventos.txt";
-	
-	*dir = (char *)malloc(sizeof(diretorio));
-	*arq = &arquivo;
-	
-	lerdedir( &diretorio, &arquivo);
-	printf("%c", &arquivo);
-	
 }

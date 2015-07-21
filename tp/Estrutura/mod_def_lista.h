@@ -52,13 +52,19 @@ typedef struct ListaDocente {
    struct ListaDocente *proximoDocente;
 } ListaDocente;
 
-/* Para pevento.c */
-/*
+/* Para mod_impl_pevento.c */
+
 typedef struct ListaPEvento {
 	struct TipoPEvento *pevento;
 	struct ListaPEvento *proximoPEvento;
 } ListaPEvento;
-*/
+
+/* Para mod_impl_pperiodico.c */
+typedef struct ListaPPeriodico {
+	struct TipoPPeriodico *pperiodico;
+	struct ListaPPeriodico *proximoPPeriodico;
+} ListaPPeriodico;
+
 
 
 #endif

@@ -15,31 +15,35 @@
 
 int main() {
 	
-	
-	DIR *dirp;
-    struct dirent *dp;
     
 	char discentesMestrado[] = "Arquivos/discentes_mestrado.txt";
 	char discentesDoutorado[] = "Arquivos/discentes_doutorado.txt";
    char projetos[] = "Arquivos/projetos.txt";
+   char pperiodicos[] = "Arquivos/publicacao_periodico.txt";
    
    struct ListaDiscente *pInicioDiscentes;
    struct ListaDocente *pInicioDocentes;
    struct ListaProjeto *pInicioProjetos;
+   struct ListaPPeriodico *pInicioPPeriodicos;
    
    pInicioDiscentes = NULL;
    pInicioDocentes = NULL;
    pInicioProjetos = NULL;
+   pInicioPPeriodicos = NULL;
    
    setListaDiscente(&pInicioDiscentes, discentesMestrado);
    setListaDiscente(&pInicioDiscentes, discentesDoutorado);
    setListaProjeto(&pInicioProjetos, projetos);
+   setListaPPeriodico(&pInicioPPeriodicos, pperiodicos);  
    
    // OrdenaListaDiscente(&pInicioDiscentes);
    // PercorreListaDiscente(pInicioDiscentes);
    
    getListaProjeto(pInicioProjetos);
-   //getListaProjeto(&pInicioProjetos); // Imprime lista de nomes do mestrado e doutorado
+   //getListaProjeto(&pInicioProjetos); // Imprime lista de discentes do PPGI
+
+   setListaPPeriodico(&pInicioPPeriodicos, pperiodicos);   
+   getListaPPeriodico(pInicioPPeriodicos);
    
    typedef struct Elemento_{
 	   

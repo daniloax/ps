@@ -53,8 +53,11 @@ void getListaDocente(ListaDocente *pinicio) {
 * @param *arquivo um array de caracteres que contem o nome do arquivo.
 * @return sem retorno.
 */
+
 void setListaDocente(ListaDiscente **epinicio, char *arquivo) {
-   
+
+}
+/*   
    FILE *pArquivo;
    
    char separador;
@@ -83,6 +86,7 @@ void setListaDocente(ListaDiscente **epinicio, char *arquivo) {
 		
 		/* descarta informacoes de cabecalho do arquivo de entrada 
        *  ate encontrar a palavra Matricula */
+       /*
 		while (strcmp("Matricula", nome) != 0) {
 				
 			fgets(buffer, sizeof(buffer), pArquivo);
@@ -91,6 +95,8 @@ void setListaDocente(ListaDiscente **epinicio, char *arquivo) {
 		}
 		
 		/* filtra informacoes e constroi lista de discentes */
+		
+		/*
 		while ((fgets(buffer, sizeof(buffer), pArquivo)) != NULL ) {
 			
 			if (sscanf(buffer,"%d%c%d %[^\n]s", &anoMatricula, &separador, &matricula, nome) == 4) {
@@ -130,3 +136,4 @@ void setListaDocente(ListaDiscente **epinicio, char *arquivo) {
    
 }
 
+*/

@@ -32,11 +32,28 @@ Inclusão de módulo de definição.
 #include "../Estrutura/mod_def_lista.h"
 
 /*
+Enumerações de propriedades de projeto.
+*/
+
+typedef enum {
+   TITULO = 0,
+   NATUREZAA = 1,
+   REALIZADORR = 2,
+   NOME_CITACAOO = 3,
+   INTEGRANTESS = 4,
+   EDITORA = 5,
+   VOLUME = 6,
+   SERIE = 7,
+   NUMERO_PAGINA_INICIAL = 8,
+   NUMERO_PAGINA_FINAL = 9
+} PropriedadePP;
+
+/*
 Declaração de protótipo de função.
 */
 
-EXT_MOD_DEF_PPERIODICO void getListaDocente(ListaDocente *pinicio);
-EXT_MOD_DEF_PPERIODICO void setListaDocente(ListaDocente **epinicio, char *arquivo);
+EXT_MOD_DEF_PPERIODICO void getListaPPeriodico(ListaPPeriodico *pinicio);
+EXT_MOD_DEF_PPERIODICO void setListaPPeriodico(ListaPPeriodico **epinicio, char *arquivo);
 
 #undef EXT_MOD_DEF_PPERIODICO
 

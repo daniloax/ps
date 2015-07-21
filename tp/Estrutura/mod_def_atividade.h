@@ -49,7 +49,7 @@ typedef struct TipoProjeto {
 } TipoProjeto;
 
 /* Para evento */
-/*
+
 typedef struct TipoPEvento {
    struct TipoString *nome;
    struct TipoString *titulo;
@@ -61,6 +61,21 @@ typedef struct TipoPEvento {
    struct Pessoa *realizador;
    struct Pessoa *responsavel;
    struct ListaIntegrante *integrantes;
-} TipoPPevento;
-*/
+} TipoPEvento;
+
+/* Para periodico */
+
+typedef struct TipoPPeriodico {
+   struct TipoString *nome;
+   struct TipoString *titulo;
+   struct TipoString *situacao;
+   struct TipoString *natureza;
+   struct TipoString *anoInicio;
+   int anoFim;
+   int mesFim;
+   struct Pessoa *realizador;
+   struct Pessoa *responsavel;
+   struct ListaIntegrante *integrantes;
+} TipoPPeriodico;
+
 #endif

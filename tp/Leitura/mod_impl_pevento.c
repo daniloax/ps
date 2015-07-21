@@ -43,57 +43,7 @@ Definição de corpo de função.
 * @param *pinicio um ponteiro para o inicio da lista de discentes.
 * @return sem retorno.
 */
-void getListaDiscente(ListaDiscente *pinicio) {
-	
-	
-	
-	
-	
-/**	
-*	@file mod_impl_projeto.c
-* 	@brief Módulo que faz a leitura dos projetos.
-*	@author Danilo Alves.
-* 	@author José Siqueira.
-*	@since 01/03/15.
-*	@version 1.0.
-*
-*/
 
-/* 
-Inclusão de biblioteca do compilador.
-*/
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-/*
-Declaração visando identificar o módulo como servidor.
-*/
-
-#define MOD_IMPL_PROJETO
-
-/* 
-Inclusão de módulo de definição.
-*/
-
-#include "mod_def_projeto.h"
-
-/* 
-Termina processamento de módulo de implementação.
-*/
-
-#undef MOD_IMPL_PROJETO
-
-/*
-Definição do corpo da função.
-*/
-
-/**
-* Uma função que percorre a lista de projetos.
-* @param *pinicio um ponteiro para o inicio da lista de projetos.
-* @return sem retorno.
-*/
 void getListaPEvento(ListaPEvento *pinicio) {
 	
 	char *nome;
@@ -132,7 +82,7 @@ void getListaPEvento(ListaPEvento *pinicio) {
 * @param *arquivo um array de caracteres que contem o nome do arquivo.
 * @return sem retorno.
 */
-void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
+void setListaPEvento(ListaPEvento **epinicio, char *arquivo) {
  
    FILE *pFile;
    
@@ -170,22 +120,22 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
    int flagIntegrantes;
    
    /* ponteiro auxiliar de lista de projeto */
-   ListaProjeto *pp1;
+   ListaPEvento *pp1;
    
    /* ponteiro auxiliar de lista de projeto */
-	ListaProjeto *pp2;
+	ListaPEvento *pp2;
    
    /* ponteiro auxiliar de lista de integrante */
-   ListaProjeto *pi1;
+   ListaPEvento *pi1;
    
    /* ponteiro auxiliar de lista de integrante */
-	ListaProjeto *pi2;
+	ListaPEvento *pi2;
    
    /* ponteiro de integrante */
    TipoPessoa *integrante;
 	
    /* ponteiro de projeto */
-   TipoProjeto *projeto;
+   TipoPEvento *evento;
    
    /* abre arquivo */
    pFile = fopen(arquivo, "r");
@@ -359,7 +309,7 @@ void setListaProjeto(ListaProjeto **epinicio, char *arquivo) {
             projeto->realizador = calloc(strlen(propriedade[REALIZADOR]), sizeof(char));
             strcpy(projeto->realizador, propriedade[REALIZADOR]);
             
-            pp1 = malloc(sizeof(ListaProjeto));
+            pp1 = malloc(sizeof(ListaPEvento));
             
             pp1->projeto = projeto;
 				pp1->proximoProjeto = NULL;

@@ -18,6 +18,7 @@
 #include "Estrutura/mod_def_lista.h"
 #include "Estrutura/mod_def_pessoa.h"
 #include "Leitura/mod_def_projeto.h"
+#include "Leitura/mod_def_pperiodico.h"
 
 
 int main();
